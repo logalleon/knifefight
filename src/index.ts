@@ -2,7 +2,6 @@ import Express from 'express';
 import config from './config';
 import router from './router';
 import bodyParser from 'body-parser';
-import Sequelize from 'sequelize';
 import init from './router';
 import dotenv from 'dotenv';
 
