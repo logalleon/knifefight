@@ -5,7 +5,7 @@ import config from '../config';
 
 const CLEAR = 'clear';
 const MIN_SPACING = 3;
-const MAX_SPACING = 5;
+const MAX_SPACING = 10;
 
 class Knifefight {
 
