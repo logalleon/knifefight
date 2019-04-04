@@ -2,10 +2,13 @@ import { Request, Response } from "express";
 import { SlackRequest, SlackResponse, Combatant, Orientation } from '../interfaces';
 import { pluck, randomInt } from "ossuary/dist/lib/Random";
 import config from '../config';
+import _ from 'lodash';
 
 const CLEAR = 'clear';
 const MIN_SPACING = 3;
 const MAX_SPACING = 10;
+
+const DEFAULT_NAMES = ['Grundlefly', 'Blitzen', 'Joyce', 'Hercules', 'Nietzsche', 'Bach', 'Spiderman'];
 
 class Knifefight {
 
@@ -19,18 +22,20 @@ class Knifefight {
    */
   async handle (req: Request, res: Response): Promise<void> { // < This has to resolve a promise according to some dumb stuff
     const body: SlackRequest = req.body;
+    const options = body.text.split(' ');
     const { user_id } = body;
     let response: SlackResponse;
     response = {
-      text: this.getCombatants(),
+      text: this.getCombatants(options),
       response_type: "in_channel"
     };
     res.json(response);
   }
 
-  getCombatants (): string {
+  getCombatants (options: string[]): string {
     let row1 = [];
     let row2 = [];
+    let row3 = [];
     const row1Spacing = randomInt(MIN_SPACING, MAX_SPACING);
     const row2Spacing = row1Spacing - 2;
     const rightFacing = this.getCombatant(Orientation.Right);
@@ -52,9 +57,25 @@ class Knifefight {
     row2.push(leftFacing.weapon);
     row2.push(leftFacing.legs);
 
+    // Row 3
+    let name1 = pluck(DEFAULT_NAMES);
+    let name2 = pluck(DEFAULT_NAMES);
+    if (options[0]) {
+      name1 = _.startCase(options[0].trim().toLowerCase());
+    }
+    if (options[1]) {
+      name2 = _.startCase(options[0].trim().toLowerCase());
+    }
+    row3.push(name1);
+    for (let i = 0; i < row2Spacing; i++) {
+      row3.push(CLEAR);
+    }
+
     row1 = row1.map((str) => `:${str}:`)
     row2 = row2.map((str) => `:${str}:`);
-    return `${row1.join('')}\n${row2.join('')}`;
+    row3 = row3.map((str) => `:${str}:`);
+    
+    return `${row1.join('')}\n${row2.join('')}\n${row3.join('')}`;
   }
 
   getCombatant (orientation: Orientation): Combatant {
