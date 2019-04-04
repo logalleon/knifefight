@@ -70,6 +70,7 @@ class Knifefight {
     for (let i = 0; i < row2Spacing; i++) {
       row3.push(`:${CLEAR}:`);
     }
+    row3.push(name2);
 
     row1 = row1.map((str) => `:${str}:`)
     row2 = row2.map((str) => `:${str}:`);
