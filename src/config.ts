@@ -47,7 +47,12 @@ export default {
     'female-singer',
     'unicorn_face',
     'zoidberg',
+    'whoa',
+    'sadface',
+    'crymucho'
   ],
+  HEADS_LEFT: [],
+  HEADS_RIGHT: [],
   LEGS_FACING_RIGHT: [
     'longcat-legs-right'
   ],

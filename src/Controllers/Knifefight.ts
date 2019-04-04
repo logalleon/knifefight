@@ -58,37 +58,45 @@ class Knifefight {
     row2.push(leftFacing.legs);
 
     // Row 3
-    let name1 = pluck(DEFAULT_NAMES);
-    let name2 = pluck(DEFAULT_NAMES);
-    if (options[0]) {
-      name1 = _.startCase(options[0].trim().toLowerCase());
+    if (options[0] || options[1]) {
+      let name1 = pluck(DEFAULT_NAMES);
+      let name2 = pluck(DEFAULT_NAMES);
+      if (options[0]) {
+        name1 = _.startCase(options[0].trim().toLowerCase());
+      }
+      if (options[1]) {
+        name2 = _.startCase(options[1].trim().toLowerCase());
+      }
+      row3.push(name1);
+      for (let i = 0; i < row2Spacing; i++) {
+        row3.push(`:${CLEAR}:`);
+      }
+      row3.push(name2);
     }
-    if (options[1]) {
-      name2 = _.startCase(options[1].trim().toLowerCase());
-    }
-    row3.push(name1);
-    for (let i = 0; i < row2Spacing; i++) {
-      row3.push(`:${CLEAR}:`);
-    }
-    row3.push(name2);
 
     row1 = row1.map((str) => `:${str}:`)
     row2 = row2.map((str) => `:${str}:`);
-    row3 = row3.map((str) => `${str}`);
+    if (row3.length) {
+      row3 = row3.map((str) => `${str}`);
+      return `${row1.join('')}\n${row2.join('')}\n${row3.join('')}`;
+    } else {
+      return `${row1.join('')}\n${row2.join('')}`;
+    }
     
-    return `${row1.join('')}\n${row2.join('')}\n${row3.join('')}`;
   }
 
   getCombatant (orientation: Orientation): Combatant {
-    const head = pluck(config.HEADS);
+    let head;
     let legs;
     let weapon;
     switch (orientation) {
       case Orientation.Left:
+        head = pluck(config.HEADS.concat(config.HEADS_LEFT));
         legs = pluck(config.LEGS_FACING_LEFT);
         weapon = pluck(config.WEAPONS_FACING_LEFT);
         break;
       case Orientation.Right:
+        head = pluck(config.HEADS.concat(config.HEADS_RIGHT));
         legs = pluck(config.LEGS_FACING_RIGHT);
         weapon = pluck(config.WEAPONS_FACING_RIGHT);
         break;
