@@ -64,16 +64,16 @@ class Knifefight {
       name1 = _.startCase(options[0].trim().toLowerCase());
     }
     if (options[1]) {
-      name2 = _.startCase(options[0].trim().toLowerCase());
+      name2 = _.startCase(options[1].trim().toLowerCase());
     }
     row3.push(name1);
     for (let i = 0; i < row2Spacing; i++) {
-      row3.push(CLEAR);
+      row3.push(`:${CLEAR}:`);
     }
 
     row1 = row1.map((str) => `:${str}:`)
     row2 = row2.map((str) => `:${str}:`);
-    row3 = row3.map((str) => `:${str}:`);
+    row3 = row3.map((str) => `${str}`);
     
     return `${row1.join('')}\n${row2.join('')}\n${row3.join('')}`;
   }
