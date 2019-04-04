@@ -32,7 +32,21 @@ export default {
     'shrekt',
     'pokerfacelego',
     'ussr',
-    'america'
+    'america',
+    'sufferlook',
+    'concerned_side_glances',
+    'bored_parrot',
+    'scream_cat',
+    'kidinme1',
+    'kidinme2',
+    'rolling_on_the_floor_laughing',
+    'fiest_parrot',
+    'alien',
+    'trollface',
+    'clown_face',
+    'female-singer',
+    'unicorn_face',
+    'zoidberg',
   ],
   LEGS_FACING_RIGHT: [
     'longcat-legs-right'
