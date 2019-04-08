@@ -8,8 +8,6 @@ const CLEAR = 'clear';
 const MIN_SPACING = 3;
 const MAX_SPACING = 10;
 
-const DEFAULT_NAMES = ['Grundlefly', 'Blitzen', 'Joyce', 'Hercules', 'Nietzsche', 'Bach', 'Spiderman'];
-
 class Knifefight {
 
   constructor () {
@@ -59,8 +57,8 @@ class Knifefight {
 
     // Row 3
     if (options[0] || options[1]) {
-      let name1 = pluck(DEFAULT_NAMES);
-      let name2 = pluck(DEFAULT_NAMES);
+      let name1 = pluck(config.DEFAULT_NAMES);
+      let name2 = pluck(config.DEFAULT_NAMES);
       if (options[0]) {
         name1 = _.startCase(options[0].trim().toLowerCase());
       }

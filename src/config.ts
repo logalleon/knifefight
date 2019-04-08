@@ -4,7 +4,7 @@ export default {
   HEADS: [
     'suffering',
     'radical',
-    'lilliam-pumpernickel',
+    'liliam-pumpernickel',
     'ballmer1',
     'ballmer2',
     'ballmer3',
@@ -35,12 +35,11 @@ export default {
     'america',
     'sufferlook',
     'concerned_side_glances',
-    'bored_parrot',
+    'bored-parrot',
     'scream_cat',
-    'kidinme1',
-    'kidinme2',
+    'kidinme',
     'rolling_on_the_floor_laughing',
-    'fiest_parrot',
+    'fiesta_parrot',
     'alien',
     'trollface',
     'clown_face',
@@ -52,7 +51,9 @@ export default {
     'crymucho'
   ],
   HEADS_LEFT: [],
-  HEADS_RIGHT: [],
+  HEADS_RIGHT: [
+    'kidinme2'
+  ],
   LEGS_FACING_RIGHT: [
     'longcat-legs-right'
   ],
@@ -64,5 +65,6 @@ export default {
   ],
   WEAPONS_FACING_LEFT: [
     'knifeflip'
-  ]
+  ],
+  DEFAULT_NAMES: ['Grundlefly', 'Blitzen', 'Joyce', 'Hercules', 'Nietzsche', 'Bach', 'Spiderman']
 }
