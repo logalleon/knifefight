@@ -34,7 +34,7 @@ export default {
     'ussr',
     'america',
     'sufferlook',
-    'concerned_side_glances',
+    'concerned-side-glances',
     'bored-parrot',
     'scream_cat',
     'kidinme',
@@ -48,23 +48,34 @@ export default {
     'zoidberg',
     'whoa',
     'sadface',
-    'crymucho'
+    'crymucho',
+    'monkeyface',
+    'full_moon_with_face',
+    'eyeroll',
+    'mindblown',
+
+
   ],
   HEADS_LEFT: [],
   HEADS_RIGHT: [
-    'kidinme2'
+    'kidinme2',
+    'full_moon_with_face'
   ],
   LEGS_FACING_RIGHT: [
-    'longcat-legs-right'
+    'longcat-legs-right',
+
   ],
   LEGS_FACING_LEFT: [
     'longcatbot'
   ],
   WEAPONS_FACING_RIGHT: [
-    'knife'
+    'knife',
+    'gun',
+
   ],
   WEAPONS_FACING_LEFT: [
-    'knifeflip'
+    'knifeflip',
+    'squirtgun'
   ],
   DEFAULT_NAMES: ['Grundlefly', 'Blitzen', 'Joyce', 'Hercules', 'Nietzsche', 'Bach', 'Spiderman', 'Nicolas Cage']
 }
