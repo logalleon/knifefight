@@ -66,5 +66,5 @@ export default {
   WEAPONS_FACING_LEFT: [
     'knifeflip'
   ],
-  DEFAULT_NAMES: ['Grundlefly', 'Blitzen', 'Joyce', 'Hercules', 'Nietzsche', 'Bach', 'Spiderman']
+  DEFAULT_NAMES: ['Grundlefly', 'Blitzen', 'Joyce', 'Hercules', 'Nietzsche', 'Bach', 'Spiderman', 'Nicolas Cage']
 }
