@@ -39,7 +39,7 @@ export default {
     'scream_cat',
     'kidinme',
     'rolling_on_the_floor_laughing',
-    'fiesta_parrot',
+    'fiestaparrot',
     'alien',
     'trollface',
     'clown_face',
@@ -69,13 +69,13 @@ export default {
     'longcatbot'
   ],
   WEAPONS_FACING_RIGHT: [
-    'knife^10',
-    'gun',
+    'knife^5',
+    'squirtgun',
 
   ],
   WEAPONS_FACING_LEFT: [
-    'knifeflip^10',
-    'squirtgun'
+    'knifeflip^5',
+    'gun'
   ],
   DEFAULT_NAMES: ['Grundlefly', 'Blitzen', 'Joyce', 'Hercules', 'Nietzsche', 'Bach', 'Spiderman', 'Nicolas Cage']
 }

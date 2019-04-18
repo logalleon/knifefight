@@ -400,7 +400,7 @@ on-finished@~2.3.0:
   dependencies:
     ee-first "1.1.1"
 
-ossuary@^1.1.5:
+ossuary@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/ossuary/-/ossuary-1.1.6.tgz#6b229c896cc1221656397de6b491379ab62de408"
   dependencies:
