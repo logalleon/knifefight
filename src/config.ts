@@ -39,7 +39,7 @@ export default {
     'scream_cat',
     'kidinme',
     'rolling_on_the_floor_laughing',
-    'fiestaparrot',
+    'fiesta-parrot',
     'alien',
     'trollface',
     'clown_face',
