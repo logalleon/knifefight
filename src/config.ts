@@ -49,7 +49,7 @@ export default {
     'whoa',
     'sadface',
     'crymucho',
-    'monkeyface',
+    'monkey_face',
     'full_moon_with_face',
     'eyeroll',
     'mindblown',
