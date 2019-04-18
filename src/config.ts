@@ -69,12 +69,12 @@ export default {
     'longcatbot'
   ],
   WEAPONS_FACING_RIGHT: [
-    'knife',
+    'knife^10',
     'gun',
 
   ],
   WEAPONS_FACING_LEFT: [
-    'knifeflip',
+    'knifeflip^10',
     'squirtgun'
   ],
   DEFAULT_NAMES: ['Grundlefly', 'Blitzen', 'Joyce', 'Hercules', 'Nietzsche', 'Bach', 'Spiderman', 'Nicolas Cage']

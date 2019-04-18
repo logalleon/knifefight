@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { SlackRequest, SlackResponse, Combatant, Orientation } from '../interfaces';
-import { pluck, randomInt } from "ossuary/dist/lib/Random";
+import { pluck, weightedPluck, randomInt } from "ossuary/dist/lib/Random";
+import Parser from "ossuary/dist/lib/Parser";
 import config from '../config';
 import _ from 'lodash';
 
@@ -10,7 +11,10 @@ const MAX_SPACING = 10;
 
 class Knifefight {
 
+  private parser: Parser;
+
   constructor () {
+    this.parser = new Parser({});
   }
 
   /**
@@ -21,7 +25,6 @@ class Knifefight {
   async handle (req: Request, res: Response): Promise<void> { // < This has to resolve a promise according to some dumb stuff
     const body: SlackRequest = req.body;
     const options = body.text.split(' ');
-    const { user_id } = body;
     let response: SlackResponse;
     response = {
       text: this.getCombatants(options),
@@ -87,17 +90,21 @@ class Knifefight {
     let head;
     let legs;
     let weapon;
+    let parseable;
     switch (orientation) {
       case Orientation.Left:
         head = pluck(config.HEADS.concat(config.HEADS_LEFT));
         legs = pluck(config.LEGS_FACING_LEFT);
-        weapon = pluck(config.WEAPONS_FACING_LEFT);
+        weapon = weightedPluck(config.WEAPONS_FACING_LEFT);
         break;
       case Orientation.Right:
         head = pluck(config.HEADS.concat(config.HEADS_RIGHT));
         legs = pluck(config.LEGS_FACING_RIGHT);
-        weapon = pluck(config.WEAPONS_FACING_RIGHT);
+        weapon = weightedPluck(config.WEAPONS_FACING_RIGHT);
         break;
+    }
+    if (!weapon) {
+      weapon = '';
     }
     return { head, legs, weapon };
   }
