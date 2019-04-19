@@ -25,7 +25,17 @@ class Knifefight {
    */
   async handle (req: Request, res: Response): Promise<void> { // < This has to resolve a promise according to some dumb stuff
     const body: SlackRequest = req.body;
-    const options = body.text.split(' ');
+    // String all string-quoted
+    let { text } = body;
+    if (text.match(REG_QUOTES)) {
+      const matches: any = text.match(REG_QUOTES);
+      matches.forEach((match: string) => {
+        // Replace spaces ...
+        text = text.replace(match, match.replace(/ /g, '%'))
+      });
+    }
+    // ... because of this right here
+    const options = text.split(' ');
     let response: SlackResponse;
     response = {
       text: this.getCombatants(options),
@@ -74,16 +84,16 @@ class Knifefight {
       let name2 = pluck(config.DEFAULT_NAMES);
       if (options[0]) {
         if (options[0].match(REG_QUOTES)) {
-          name1 = name1.replace(/\"/g, '');
+          name1 = name1.replace(/\"/g, '').replace(/%/g, ' ');
         } else {
           name1 = _.startCase(options[0].trim().toLowerCase());
         }
       }
       if (options[1]) {
         if (options[1].match(REG_QUOTES)) {
-          name2 = name2.replace(/\"/g, '');
+          name2 = name2.replace(/\"/g, '').replace(/%/g, ' ');
         } else {
-          name2 = _.startCase(options[0].trim().toLowerCase());
+          name2 = _.startCase(options[1].trim().toLowerCase());
         }
       }
       row3.push(name1);
