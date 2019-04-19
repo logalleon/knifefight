@@ -84,14 +84,14 @@ class Knifefight {
       let name2 = pluck(config.DEFAULT_NAMES);
       if (options[0]) {
         if (options[0].match(REG_QUOTES)) {
-          name1 = name1.replace(/\"/g, '').replace(/%/g, ' ');
+          name1 = options[0].replace(/"/g, '').replace(/%/g, ' ');
         } else {
           name1 = _.startCase(options[0].trim().toLowerCase());
         }
       }
       if (options[1]) {
         if (options[1].match(REG_QUOTES)) {
-          name2 = name2.replace(/\"/g, '').replace(/%/g, ' ');
+          name2 = options[1].replace(/"/g, '').replace(/%/g, ' ');
         } else {
           name2 = _.startCase(options[1].trim().toLowerCase());
         }
