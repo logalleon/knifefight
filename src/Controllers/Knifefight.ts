@@ -8,7 +8,7 @@ import _ from 'lodash';
 const CLEAR = 'clear';
 // Spacing has to be odd for things to fight over to work
 const SPACING = [3, 5, 7];
-const REG_QUOTES = /".*?"/;
+const REG_QUOTES = /".*?"/g;
 
 class Knifefight {
 
