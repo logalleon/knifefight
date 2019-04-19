@@ -8,7 +8,7 @@ import _ from 'lodash';
 const CLEAR = 'clear';
 // Spacing has to be odd for things to fight over to work
 const SPACING = [3, 5, 7];
-const REG_QUOTES = /".*?"/g;
+const REG_QUOTES = /['"“”‘’„”«»].*?['"“”‘’„”«»]/g;
 
 class Knifefight {
 
@@ -34,6 +34,7 @@ class Knifefight {
         text = text.replace(match, match.replace(/ /g, '%'))
       });
     }
+    console.log(text);
     // ... because of this right here
     const options = text.split(' ');
     let response: SlackResponse;
