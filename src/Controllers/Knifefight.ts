@@ -6,8 +6,9 @@ import config from '../config';
 import _ from 'lodash';
 
 const CLEAR = 'clear';
-const MIN_SPACING = 3;
-const MAX_SPACING = 10;
+// Spacing has to be odd for things to fight over to work
+const SPACING = [3, 5, 7];
+const REG_QUOTES = /".*?"/;
 
 class Knifefight {
 
@@ -37,7 +38,7 @@ class Knifefight {
     let row1 = [];
     let row2 = [];
     let row3 = [];
-    const row1Spacing = randomInt(MIN_SPACING, MAX_SPACING);
+    const row1Spacing = pluck(SPACING);
     const row2Spacing = row1Spacing - 2;
     const rightFacing = this.getCombatant(Orientation.Right);
     const leftFacing = this.getCombatant(Orientation.Left);
@@ -52,8 +53,17 @@ class Knifefight {
     // Row 2
     row2.push(rightFacing.legs);
     row2.push(rightFacing.weapon);
+    let hasThingFightingOver = false;
+    if (options[2]) {
+      hasThingFightingOver = true;
+    }
+    const midpoint = Math.floor(row2Spacing / 2);
     for (let i = 0; i < row2Spacing; i++) {
-      row2.push(CLEAR);
+      if (hasThingFightingOver && i === midpoint) {
+        row2.push(options[2]);
+      } else {
+        row2.push(CLEAR);
+      }
     }
     row2.push(leftFacing.weapon);
     row2.push(leftFacing.legs);
@@ -63,10 +73,18 @@ class Knifefight {
       let name1 = pluck(config.DEFAULT_NAMES);
       let name2 = pluck(config.DEFAULT_NAMES);
       if (options[0]) {
-        name1 = _.startCase(options[0].trim().toLowerCase());
+        if (options[0].match(REG_QUOTES)) {
+          name1 = name1.replace(/\"/g, '');
+        } else {
+          name1 = _.startCase(options[0].trim().toLowerCase());
+        }
       }
       if (options[1]) {
-        name2 = _.startCase(options[1].trim().toLowerCase());
+        if (options[1].match(REG_QUOTES)) {
+          name2 = name2.replace(/\"/g, '');
+        } else {
+          name2 = _.startCase(options[0].trim().toLowerCase());
+        }
       }
       row3.push(name1);
       for (let i = 0; i < row2Spacing; i++) {
