@@ -71,11 +71,12 @@ export default {
   WEAPONS_FACING_RIGHT: [
     'knife^5',
     'squirtgun',
-
+    'wave'
   ],
   WEAPONS_FACING_LEFT: [
     'knifeflip^5',
-    'gun'
+    'gun',
+    'wave'
   ],
   DEFAULT_NAMES: ['Grundlefly', 'Blitzen', 'Joyce', 'Hercules', 'Nietzsche', 'Bach', 'Spiderman', 'Nicolas Cage']
 }

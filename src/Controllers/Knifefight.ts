@@ -34,14 +34,20 @@ class Knifefight {
         text = text.replace(match, match.replace(/ /g, '%'))
       });
     }
-    console.log(text);
     // ... because of this right here
     const options = text.split(' ');
     let response: SlackResponse;
-    response = {
-      text: this.getCombatants(options),
-      response_type: "in_channel"
-    };
+    if (options[0].toLowerCase() === 'help') {
+      response = {
+        text: this.getHelp(),
+        response_type: "in_channel"
+      };
+    } else {
+      response = {
+        text: this.getCombatants(options),
+        response_type: "in_channel"
+      };
+    }
     res.json(response);
   }
 
@@ -71,7 +77,8 @@ class Knifefight {
     const midpoint = Math.floor(row2Spacing / 2);
     for (let i = 0; i < row2Spacing; i++) {
       if (hasThingFightingOver && i === midpoint) {
-        row2.push(options[2]);
+        // Re-escape colons because they'll be added later
+        row2.push(options[2].replace(/:/g, ''));
       } else {
         row2.push(CLEAR);
       }
@@ -136,6 +143,13 @@ class Knifefight {
       weapon = '';
     }
     return { head, legs, weapon };
+  }
+
+  getHelp (): string {
+    let str = 'knifefight is v ez 2 use you do \`\/knifefight\` or \`\/knifefight Name Name\`';
+    str += '\nor u do \`\/knifefight "a thing with spaces" "this preserves formatting"\`';
+    str += '\nor u do \`\/knifefight Logan Logan :slack_emoji:\` yes you can enter the emoji itself it works now I fixt it bye';
+    return str;
   }
 
 }
