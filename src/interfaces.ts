@@ -1,6 +1,6 @@
 type TeamDomain = '352inc';
 type Command = '/knifefight';
-type ResponseType = 'in_channel' | 'ephermeral';
+type ResponseType = 'in_channel' | 'ephemeral';
 
 enum Orientation {
   Left,

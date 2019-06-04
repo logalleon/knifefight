@@ -40,7 +40,7 @@ class Knifefight {
     if (options[0].toLowerCase() === 'help') {
       response = {
         text: this.getHelp(),
-        response_type: "in_channel"
+        response_type: "ephemeral"
       };
     } else {
       response = {
@@ -148,7 +148,7 @@ class Knifefight {
   getHelp (): string {
     let str = 'knifefight is v ez 2 use you do \`\/knifefight\` or \`\/knifefight Name Name\`';
     str += '\nor u do \`\/knifefight "a thing with spaces" "this preserves formatting"\`';
-    str += '\nor u do \`\/knifefight Logan Logan :slack_emoji:\` yes you can enter the emoji itself it works now I fixt it bye';
+    str += '\nor u do \`\/knifefight Name Name :slack_emoji:\` yes you can enter the emoji itself it works now I fixt it bye';
     return str;
   }
 
